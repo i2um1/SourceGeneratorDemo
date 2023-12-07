@@ -57,7 +57,7 @@ internal static class LoggingEmitter
                 continue;
             }
 
-            if (i > 1)
+            if (i > 1 && !(i is 2 && methodParameters[1].IsException))
             {
                 stringBuilder.Append(", ");
             }
@@ -126,11 +126,6 @@ internal static class LoggingEmitter
             if (logMethodParameters[i].IsLogger)
             {
                 stringBuilder.Append("this ");
-            }
-
-            if (logMethodParameters[i].IsException)
-            {
-                continue;
             }
 
             if (i > 0)
